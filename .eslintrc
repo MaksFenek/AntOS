@@ -24,7 +24,7 @@
     "jest": true,
     "browser": true
   },
-  "ignorePatterns": [".eslintrc"],
+  "ignorePatterns": [".eslintrc", "postcss.config.js"],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off"
   }
