@@ -1,26 +1,30 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
+    "module": "CommonJS",
+    "target": "ES5",
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "Node",
+    "declaration": true,
+    "removeComments": true,
     "allowSyntheticDefaultImports": true,
+    "pretty": true,
+    "sourceMap": true,
+    "incremental": false,
+    "allowJs": false,
+    "skipLibCheck": false,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "noEmit": false,
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
 }
