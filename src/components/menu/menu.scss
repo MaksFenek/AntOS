@@ -1,0 +1,11 @@
+.menu {
+  &-button {
+    height: 36px !important;
+    width: 36px !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+}

@@ -1,9 +1,17 @@
 :root {
   // DESKTOP
   --desktop-footer-color: var(--app-window-header-color);
-  --desktop-footer-height: var(--app-window-header-height);
+  --desktop-footer-height: 50px;
   --desktop-content-padding: 8px;
   --desktop-footer-padding: 8px;
+
+  // MENU
+  --menu-window-height: 500px;
+  --menu-window-width: 400px;
+  --menu-window-border: 1px solid #339fec;
+  --menu-window-border-radius: var(--app-window-layout-border-radius);
+  --menu-window-content-color: #4baaed;
+  --menu-window-sider-color: #3ea4ec;
 
   // APP-WINDOW
   --app-window-layout-border: 1px solid #4baaed;

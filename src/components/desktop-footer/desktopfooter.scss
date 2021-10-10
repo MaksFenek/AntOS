@@ -3,6 +3,7 @@
   height: var(--desktop-footer-height) !important;
   padding: var(--desktop-footer-padding) !important;
   display: flex;
+  position: relative;
 
   &__bar {
     margin-left: 8px;

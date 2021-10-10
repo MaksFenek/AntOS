@@ -1,0 +1,19 @@
+.menu-window {
+  width: var(--menu-window-width);
+  height: var(--menu-window-height);
+  position: absolute;
+  bottom: var(--desktop-footer-height);
+  border-top: var(--menu-window-border);
+  border-right: var(--menu-window-border);
+  border-top-right-radius: var(--menu-window-border-radius);
+  left: 0;
+
+  &__sider {
+    background: var(--menu-window-sider-color) !important;
+    border-right: var(--menu-window-border);
+  }
+
+  &__content {
+    background: var(--menu-window-content-color);
+  }
+}
