@@ -19,7 +19,7 @@ export const AppWindow: React.FC<IAppWindow> = ({
   onHide,
 }) => {
   return (
-    <Draggable handle=".handle">
+    <Draggable handle=".handle" cancel=".non-draggable" bounds=".desktop">
       <Resizable
         minWidth="300"
         minHeight="300"
@@ -31,12 +31,14 @@ export const AppWindow: React.FC<IAppWindow> = ({
           <Header className="handle app-window__header">
             <Space align="center">
               <Button
+                className="non-draggable"
                 onClick={onClose}
                 size="small"
                 type="primary"
                 icon={<CloseOutlined />}
               />
               <Button
+                className="non-draggable"
                 onClick={onHide}
                 size="small"
                 type="primary"
