@@ -1,8 +1,9 @@
 .app-icon {
-  height: var(--app-icon-size) !important;
-  width: var(--app-icon-size) !important;
-  padding: 0 !important;
-  position: absolute !important;
+  height: var(--app-icon-size);
+  width: var(--app-icon-size);
+  background: var(--app-icon-background);
+  border-radius: var(--menu-window-border-radius);
+  padding: 0;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -10,8 +11,19 @@
   overflow: hidden;
   opacity: var(--app-icon-opacity);
 
-  &__name {
+  &__handle {
     position: absolute;
-    top: 1px;
+    max-width: var(--app-icon-size);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__name {
+    margin-top: 5px;
+    word-wrap: break-word;
+    text-align: center;
+    font-weight: 300;
   }
 }

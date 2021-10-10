@@ -1,10 +1,9 @@
 import React, {memo} from 'react'
-import {Button, ButtonProps, Tooltip} from 'antd'
 import Draggable, {ControlPosition} from 'react-draggable'
 
 import './app-icon.scss'
 
-interface IAppIcon extends ButtonProps {
+interface IAppIcon extends React.HTMLAttributes<HTMLDivElement> {
   defaultPosition?: ControlPosition
   bounds?: string
   name?: string
@@ -21,12 +20,14 @@ export const AppIcon: React.FC<IAppIcon> = memo(
     return (
       <Draggable
         defaultPosition={defaultPosition}
-        handle=".app-icon"
-        bounds={bounds}
-        grid={[24, 24]}>
-        <Button className="app-icon" size="large" {...props}>
-          <Tooltip title={name}>{children}</Tooltip>
-        </Button>
+        handle=".app-icon__handle"
+        bounds={bounds}>
+        <div className="app-icon__handle">
+          <div className="app-icon" {...props}>
+            {children}
+          </div>
+          <span className="app-icon__name">{name}</span>
+        </div>
       </Draggable>
     )
   },
