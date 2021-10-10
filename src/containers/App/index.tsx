@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react'
+import React, {memo, useCallback, useEffect} from 'react'
 import {ControlPosition} from 'react-draggable'
 
 import {AppIcon, AppWindow} from 'src/components'
@@ -12,52 +12,54 @@ interface IApp {
   defaultPosition: ControlPosition
 }
 
-export const App: React.FC<IApp> = ({name, icon, window, defaultPosition}) => {
-  const state = useAppSelector(store => store.apps.allApps?.[name])
-  const dispatch = useAppDispatch()
+export const App: React.FC<IApp> = memo(
+  ({name, icon, window, defaultPosition}) => {
+    const state = useAppSelector(store => store.apps.allApps?.[name])
+    const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(
-      addApp({
-        name,
-        icon,
-        defaultPosition,
-        position: defaultPosition,
-        isOpen: false,
-        hidden: false,
-      }),
+    useEffect(() => {
+      dispatch(
+        addApp({
+          name,
+          icon,
+          defaultPosition,
+          position: defaultPosition,
+          isOpen: false,
+          hidden: false,
+        }),
+      )
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const onClickAppIcon = useCallback(() => {
+      dispatch(openApp(name))
+    }, [dispatch, name])
+
+    const onCloseAppWindow = useCallback(() => {
+      dispatch(closeApp(name))
+    }, [dispatch, name])
+
+    const onHideAppWindow = useCallback(() => {
+      dispatch(toggleApp(name))
+    }, [dispatch, name])
+
+    return (
+      <>
+        <AppIcon
+          name={state?.name}
+          defaultPosition={defaultPosition}
+          onDoubleClick={onClickAppIcon}>
+          {icon}
+        </AppIcon>
+        {state?.isOpen && (
+          <AppWindow
+            style={{display: state.hidden ? 'none' : undefined}}
+            onClose={onCloseAppWindow}
+            onHide={onHideAppWindow}>
+            {window}
+          </AppWindow>
+        )}
+      </>
     )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const onClickAppIcon = useCallback(() => {
-    dispatch(openApp(name))
-  }, [dispatch, name])
-
-  const onCloseAppWindow = useCallback(() => {
-    dispatch(closeApp(name))
-  }, [dispatch, name])
-
-  const onHideAppWindow = useCallback(() => {
-    dispatch(toggleApp(name))
-  }, [dispatch, name])
-
-  return (
-    <>
-      <AppIcon
-        name={state?.name}
-        defaultPosition={defaultPosition}
-        onDoubleClick={onClickAppIcon}>
-        {icon}
-      </AppIcon>
-      {state?.isOpen && (
-        <AppWindow
-          style={state.hidden ? {display: 'none'} : undefined}
-          onClose={onCloseAppWindow}
-          onHide={onHideAppWindow}>
-          {window}
-        </AppWindow>
-      )}
-    </>
-  )
-}
+  },
+)

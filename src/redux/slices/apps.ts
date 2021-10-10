@@ -24,6 +24,7 @@ export const apps = createSlice({
     openApp: (state, action: PayloadAction<string>) => {
       const app = state.allApps?.[action.payload]
       if (app) {
+        app.hidden = false
         app.isOpen = true
       }
     },

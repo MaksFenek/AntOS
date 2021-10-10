@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {Button, ButtonProps, Tooltip} from 'antd'
 import Draggable, {ControlPosition} from 'react-draggable'
 
@@ -10,22 +10,24 @@ interface IAppIcon extends ButtonProps {
   name?: string
 }
 
-export const AppIcon: React.FC<IAppIcon> = ({
-  children,
-  defaultPosition,
-  bounds = '.desktop-content',
-  name,
-  ...props
-}) => {
-  return (
-    <Draggable
-      defaultPosition={defaultPosition}
-      handle=".app-icon"
-      bounds={bounds}
-      grid={[24, 24]}>
-      <Button className="app-icon" size="large" {...props}>
-        <Tooltip title={name}>{children}</Tooltip>
-      </Button>
-    </Draggable>
-  )
-}
+export const AppIcon: React.FC<IAppIcon> = memo(
+  ({
+    children,
+    defaultPosition,
+    bounds = '.desktop-content',
+    name,
+    ...props
+  }) => {
+    return (
+      <Draggable
+        defaultPosition={defaultPosition}
+        handle=".app-icon"
+        bounds={bounds}
+        grid={[24, 24]}>
+        <Button className="app-icon" size="large" {...props}>
+          <Tooltip title={name}>{children}</Tooltip>
+        </Button>
+      </Draggable>
+    )
+  },
+)

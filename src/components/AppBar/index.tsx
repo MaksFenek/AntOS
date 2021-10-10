@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {Space} from 'antd'
 
 import {AppBarIcon} from './AppBarIcon'
@@ -9,12 +9,14 @@ interface IAppBar {
   onClick: (name: string) => void
 }
 
-export const AppBar: React.FC<IAppBar> = ({apps, onClick}) => {
+export const AppBar: React.FC<IAppBar> = memo(({apps, onClick}) => {
   return (
     <Space>
       {apps.map(app => (
-        <AppBarIcon onClick={() => onClick(app.name)}>{app.icon}</AppBarIcon>
+        <AppBarIcon key={app.name} onClick={() => onClick(app.name)}>
+          {app.icon}
+        </AppBarIcon>
       ))}
     </Space>
   )
-}
+})
