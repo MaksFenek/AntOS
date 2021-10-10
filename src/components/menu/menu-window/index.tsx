@@ -1,9 +1,9 @@
 import React from 'react'
 import {Layout} from 'antd'
 
-import {MenuList} from '../menu-list'
+import {MenuList} from '../Menu-list'
 
-import './menuwindow.scss'
+import './menu-window.scss'
 
 const {Sider, Content} = Layout
 

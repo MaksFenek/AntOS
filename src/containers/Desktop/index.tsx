@@ -1,9 +1,9 @@
 import React from 'react'
-
 import {Layout} from 'antd'
 
-import './desktop.scss'
 import {AppBar, DesktopFooter, Menu} from 'src/components'
+
+import './desktop.scss'
 
 const {Content} = Layout
 

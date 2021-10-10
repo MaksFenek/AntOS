@@ -1,9 +1,10 @@
+import React, {useCallback, useState} from 'react'
 import {Button} from 'antd'
 import {HomeTwoTone} from '@ant-design/icons'
-import React, {useCallback, useState} from 'react'
+
+import {MenuWindow} from './Menu-window'
 
 import './menu.scss'
-import {MenuWindow} from './menu-window'
 
 export const Menu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

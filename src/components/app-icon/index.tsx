@@ -2,7 +2,7 @@ import React from 'react'
 import {Button, ButtonProps} from 'antd'
 import Draggable, {ControlPosition} from 'react-draggable'
 
-import './appicon.scss'
+import './app-icon.scss'
 
 interface IAppIcon extends ButtonProps {
   defaultPosition?: ControlPosition

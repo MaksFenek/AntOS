@@ -4,7 +4,7 @@ import {Resizable} from 're-resizable'
 import Draggable from 'react-draggable'
 import {CloseOutlined, LineOutlined} from '@ant-design/icons'
 
-import './appwindow.scss'
+import './app-window.scss'
 
 const {Header, Content} = Layout
 

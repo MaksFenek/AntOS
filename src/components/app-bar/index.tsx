@@ -1,7 +1,8 @@
-import {Space} from 'antd'
 import React from 'react'
-import {AppBarIcon} from './app-bar-icon'
+import {Space} from 'antd'
 import {CodeTwoTone} from '@ant-design/icons'
+
+import {AppBarIcon} from './App-bar-icon'
 
 export const AppBar: React.FC = () => {
   return (

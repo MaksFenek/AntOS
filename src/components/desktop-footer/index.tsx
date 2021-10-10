@@ -1,8 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {Layout, Space, DatePicker, TimePicker} from 'antd'
-
-import './desktopfooter.scss'
 import moment from 'moment'
+
+import './desktop-footer.scss'
 
 const {Footer} = Layout
 
@@ -33,7 +33,7 @@ export const DesktopFooter: React.FC<IDesktopFooter> = ({menu, appBar}) => {
   return (
     <Footer className="desktop-footer">
       {menu}
-      <Space align="end" className="desktop-footer__bar">
+      <Space align="start" className="desktop-footer__bar">
         <Space>{appBar}</Space>
         <Space>
           <TimePicker bordered={false} allowClear={false} value={time} />

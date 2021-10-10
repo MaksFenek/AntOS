@@ -1,5 +1,7 @@
-import {Button} from 'antd'
 import React from 'react'
+import {Button} from 'antd'
+
+import './app-bar-icon.scss'
 
 export const AppBarIcon: React.FC = ({children}) => {
   return (
