@@ -1,31 +1,48 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useEffect} from 'react'
 import {ControlPosition} from 'react-draggable'
 
 import {AppIcon, AppWindow} from 'src/components'
+import {useAppDispatch, useAppSelector} from 'src/redux/hooks'
+import {addApp, closeApp, openApp} from 'src/redux/slices/apps'
 
 interface IApp {
+  name: string
   icon: React.ReactNode
   window: React.ReactNode | string
-  defaultPosition?: ControlPosition
+  defaultPosition: ControlPosition
 }
 
-export const App: React.FC<IApp> = ({icon, window, defaultPosition}) => {
-  const [isWindowOpen, setIsWindowOpen] = useState(false)
+export const App: React.FC<IApp> = ({name, icon, window, defaultPosition}) => {
+  const state = useAppSelector(store => store.apps.allApps?.[name])
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(
+      addApp({
+        name,
+        icon,
+        defaultPosition,
+        position: defaultPosition,
+        isOpen: false,
+      }),
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const onClickAppIcon = useCallback(() => {
-    setIsWindowOpen(true)
-  }, [])
+    dispatch(openApp(name))
+  }, [dispatch, name])
 
   const onCloseAppWindow = useCallback(() => {
-    setIsWindowOpen(false)
-  }, [])
+    dispatch(closeApp(name))
+  }, [dispatch, name])
 
   return (
     <>
       <AppIcon defaultPosition={defaultPosition} onDoubleClick={onClickAppIcon}>
         {icon}
       </AppIcon>
-      {isWindowOpen && (
+      {state?.isOpen && (
         <AppWindow onClose={onCloseAppWindow}>{window}</AppWindow>
       )}
     </>

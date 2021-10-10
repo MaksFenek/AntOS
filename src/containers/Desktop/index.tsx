@@ -1,7 +1,7 @@
 import React from 'react'
 import {Layout} from 'antd'
 
-import {AppBar, DesktopFooter, Menu} from 'src/components'
+import {DesktopFooterContainer} from '../Desktop-footer'
 
 import './desktop.scss'
 
@@ -11,7 +11,7 @@ export const Desktop: React.FC = ({children}) => {
   return (
     <Layout className="desktop">
       <Content className="desktop-content">{children}</Content>
-      <DesktopFooter menu={<Menu />} appBar={<AppBar />} />
+      <DesktopFooterContainer />
     </Layout>
   )
 }

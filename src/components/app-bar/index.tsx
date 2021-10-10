@@ -1,15 +1,19 @@
 import React from 'react'
 import {Space} from 'antd'
-import {CodeTwoTone} from '@ant-design/icons'
 
 import {AppBarIcon} from './App-bar-icon'
+import {App} from 'src/redux/types'
 
-export const AppBar: React.FC = () => {
+interface IAppBar {
+  apps: App[]
+}
+
+export const AppBar: React.FC<IAppBar> = ({apps}) => {
   return (
     <Space>
-      <AppBarIcon>
-        <CodeTwoTone style={{fontSize: '30px'}} />
-      </AppBarIcon>
+      {apps.map(app => (
+        <AppBarIcon>{app.icon}</AppBarIcon>
+      ))}
     </Space>
   )
 }
