@@ -2,11 +2,12 @@
   background: var(--desktop-footer-color) !important;
   height: var(--desktop-footer-height) !important;
   padding: var(--desktop-footer-padding) !important;
+  z-index: 100;
   display: flex;
   position: relative;
+  opacity: var(--desktop-footer-opacity);
 
   &__bar {
-    margin-left: 8px;
     justify-content: space-between;
     width: 100%;
     height: 100%;

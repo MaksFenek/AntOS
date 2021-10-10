@@ -4,9 +4,10 @@
   --desktop-footer-height: 50px;
   --desktop-content-padding: 8px;
   --desktop-footer-padding: 8px;
+  --desktop-footer-opacity: 0.85;
 
   // MENU
-  --menu-button-size: 36px;
+  --menu-button-size: 34px;
   --menu-button-margin: 16px;
   --menu-window-height: 500px;
   --menu-window-width: 400px;
@@ -15,11 +16,14 @@
   --menu-window-content-color: var(--app-window-content-color);
   --menu-window-sider-color: #fafafa;
 
-  // APP-WINDOW
+  // APP
+  --app-icon-size: 48px;
+  --app-icon-opacity: 0.9;
+  --app-window-opacity: 0.9;
   --app-window-layout-border: 1px solid #4baaed;
   --app-window-layout-border-radius: 4px;
-  --app-window-content-color: #c5dff1;
-  --app-window-header-color: #70bbf0;
+  --app-window-content-color: #d0ebfd;
+  --app-window-header-color: #93d2ff;
   --app-window-header-height: 40px;
   --app-window-header-padding: 8px;
   --app-window-content-padding: 10px;

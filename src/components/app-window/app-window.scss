@@ -1,6 +1,7 @@
 .app-window {
   position: absolute !important;
   z-index: 2;
+  opacity: var(--app-window-opacity);
   &__layout {
     height: 100%;
     width: 100%;

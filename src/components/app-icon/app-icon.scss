@@ -1,6 +1,6 @@
 .app-icon {
-  height: 48px !important;
-  width: 48px !important;
+  height: var(--app-icon-size) !important;
+  width: var(--app-icon-size) !important;
   padding: 0 !important;
   position: absolute !important;
   z-index: 1;
@@ -8,4 +8,5 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  opacity: var(--app-icon-opacity);
 }
