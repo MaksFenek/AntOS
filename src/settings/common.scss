@@ -10,8 +10,8 @@
   --menu-window-width: 400px;
   --menu-window-border: 1px solid #339fec;
   --menu-window-border-radius: var(--app-window-layout-border-radius);
-  --menu-window-content-color: #4baaed;
-  --menu-window-sider-color: #3ea4ec;
+  --menu-window-content-color: var(--app-window-content-color);
+  --menu-window-sider-color: #fafafa;
 
   // APP-WINDOW
   --app-window-layout-border: 1px solid #4baaed;

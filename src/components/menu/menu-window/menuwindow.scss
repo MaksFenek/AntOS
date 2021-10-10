@@ -2,6 +2,7 @@
   width: var(--menu-window-width);
   height: var(--menu-window-height);
   position: absolute;
+  overflow: hidden;
   bottom: var(--desktop-footer-height);
   border-top: var(--menu-window-border);
   border-right: var(--menu-window-border);
@@ -11,6 +12,7 @@
   &__sider {
     background: var(--menu-window-sider-color) !important;
     border-right: var(--menu-window-border);
+    overflow-y: scroll;
   }
 
   &__content {
