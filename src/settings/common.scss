@@ -1,4 +1,11 @@
 :root {
+  // DESKTOP
+  --desktop-footer-color: var(--app-window-header-color);
+  --desktop-footer-height: var(--app-window-header-height);
+  --desktop-content-padding: 8px;
+  --desktop-footer-padding: 8px;
+
+  // APP-WINDOW
   --app-window-layout-border: 1px solid #4baaed;
   --app-window-layout-border-radius: 4px;
   --app-window-content-color: #c5dff1;
