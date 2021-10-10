@@ -1,8 +1,9 @@
 import React, {useMemo} from 'react'
 
-import {AppBar, DesktopFooter, Menu} from 'src/components'
+import {DesktopFooter, Menu} from 'src/components'
 import {useAppSelector} from 'src/redux/hooks'
 import {App} from 'src/redux/types'
+import {AppBarContainer} from '../App-bar'
 
 export const DesktopFooterContainer: React.FC = () => {
   const state = useAppSelector(store => store.apps.allApps)
@@ -18,5 +19,7 @@ export const DesktopFooterContainer: React.FC = () => {
     return all
   }, [state])
 
-  return <DesktopFooter menu={<Menu />} appBar={<AppBar apps={apps} />} />
+  return (
+    <DesktopFooter menu={<Menu />} appBar={<AppBarContainer apps={apps} />} />
+  )
 }

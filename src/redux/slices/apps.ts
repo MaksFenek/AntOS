@@ -19,7 +19,7 @@ export const apps = createSlice({
   reducers: {
     addApp: (state, action: PayloadAction<App>) => {
       const app = action.payload
-      state.allApps[app.name] = {...app}
+      state.allApps[app.name] = app
     },
     openApp: (state, action: PayloadAction<string>) => {
       const app = state.allApps?.[action.payload]
@@ -36,7 +36,7 @@ export const apps = createSlice({
     toggleApp: (state, action: PayloadAction<string>) => {
       const app = state.allApps?.[action.payload]
       if (app) {
-        app.isOpen = !app.isOpen
+        app.hidden = !app.hidden
       }
     },
   },

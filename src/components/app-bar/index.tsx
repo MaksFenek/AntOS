@@ -6,13 +6,14 @@ import {App} from 'src/redux/types'
 
 interface IAppBar {
   apps: App[]
+  onClick: (name: string) => void
 }
 
-export const AppBar: React.FC<IAppBar> = ({apps}) => {
+export const AppBar: React.FC<IAppBar> = ({apps, onClick}) => {
   return (
     <Space>
       {apps.map(app => (
-        <AppBarIcon>{app.icon}</AppBarIcon>
+        <AppBarIcon onClick={() => onClick(app.name)}>{app.icon}</AppBarIcon>
       ))}
     </Space>
   )

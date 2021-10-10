@@ -7,4 +7,5 @@ export interface App {
   position: ControlPosition
   defaultPosition: ControlPosition
   isOpen: boolean
+  hidden: boolean
 }

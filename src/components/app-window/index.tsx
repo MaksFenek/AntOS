@@ -11,10 +11,12 @@ const {Header, Content} = Layout
 interface IAppWindow {
   onClose?: () => void
   onHide?: () => void
+  style?: React.CSSProperties
 }
 
 export const AppWindow: React.FC<IAppWindow> = ({
   children,
+  style,
   onClose,
   onHide,
 }) => {
@@ -35,7 +37,7 @@ export const AppWindow: React.FC<IAppWindow> = ({
           height: 400,
           width: 500,
         }}>
-        <Layout className="app-window__layout">
+        <Layout className="app-window__layout" style={style}>
           <Header className="handle app-window__header">
             <Space align="center">
               <Button

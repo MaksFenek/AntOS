@@ -3,7 +3,7 @@ import {ControlPosition} from 'react-draggable'
 
 import {AppIcon, AppWindow} from 'src/components'
 import {useAppDispatch, useAppSelector} from 'src/redux/hooks'
-import {addApp, closeApp, openApp} from 'src/redux/slices/apps'
+import {addApp, closeApp, openApp, toggleApp} from 'src/redux/slices/apps'
 
 interface IApp {
   name: string
@@ -24,6 +24,7 @@ export const App: React.FC<IApp> = ({name, icon, window, defaultPosition}) => {
         defaultPosition,
         position: defaultPosition,
         isOpen: false,
+        hidden: false,
       }),
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,13 +38,22 @@ export const App: React.FC<IApp> = ({name, icon, window, defaultPosition}) => {
     dispatch(closeApp(name))
   }, [dispatch, name])
 
+  const onHideAppWindow = useCallback(() => {
+    dispatch(toggleApp(name))
+  }, [dispatch, name])
+
   return (
     <>
       <AppIcon defaultPosition={defaultPosition} onDoubleClick={onClickAppIcon}>
         {icon}
       </AppIcon>
       {state?.isOpen && (
-        <AppWindow onClose={onCloseAppWindow}>{window}</AppWindow>
+        <AppWindow
+          style={state.hidden ? {display: 'none'} : undefined}
+          onClose={onCloseAppWindow}
+          onHide={onHideAppWindow}>
+          {window}
+        </AppWindow>
       )}
     </>
   )
