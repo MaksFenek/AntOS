@@ -2,6 +2,8 @@
   height: 48px !important;
   width: 48px !important;
   padding: 0 !important;
+  position: absolute !important;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;

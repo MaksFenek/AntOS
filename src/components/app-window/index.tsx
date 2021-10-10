@@ -19,7 +19,15 @@ export const AppWindow: React.FC<IAppWindow> = ({
   onHide,
 }) => {
   return (
-    <Draggable handle=".handle" cancel=".non-draggable" bounds=".desktop">
+    <Draggable
+      handle=".handle"
+      cancel=".non-draggable"
+      bounds=".desktop"
+      defaultClassName="app-window"
+      defaultPosition={{
+        x: 100,
+        y: 100,
+      }}>
       <Resizable
         minWidth="300"
         minHeight="300"

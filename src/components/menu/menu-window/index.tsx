@@ -1,5 +1,5 @@
 import React from 'react'
-import {Layout, Space} from 'antd'
+import {Layout} from 'antd'
 
 import {MenuList} from '../menu-list'
 
