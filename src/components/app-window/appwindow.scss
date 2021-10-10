@@ -1,0 +1,23 @@
+.app-window {
+  &__layout {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border: var(--app-window-layout-border);
+    border-radius: var(--app-window-layout-border-radius);
+  }
+
+  &__header {
+    padding: var(--app-window-header-padding);
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    height: var(--app-window-header-height);
+    background: var(--app-window-header-color);
+  }
+
+  &__content {
+    background: var(--app-window-content-color);
+    padding: var(--app-window-content-padding);
+  }
+}
