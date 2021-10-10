@@ -1,7 +1,7 @@
 import React from 'react'
 import {Layout} from 'antd'
 
-import {DesktopFooterContainer} from '../Desktop-footer'
+import {DesktopFooterContainer} from '../DesktopFooterContainer'
 
 import './desktop.scss'
 

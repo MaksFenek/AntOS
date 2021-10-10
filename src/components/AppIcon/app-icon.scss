@@ -9,4 +9,9 @@
   align-items: center;
   overflow: hidden;
   opacity: var(--app-icon-opacity);
+
+  &__name {
+    position: absolute;
+    top: 1px;
+  }
 }

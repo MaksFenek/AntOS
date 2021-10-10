@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, ButtonProps} from 'antd'
+import {Button, ButtonProps, Tooltip} from 'antd'
 import Draggable, {ControlPosition} from 'react-draggable'
 
 import './app-icon.scss'
@@ -7,12 +7,14 @@ import './app-icon.scss'
 interface IAppIcon extends ButtonProps {
   defaultPosition?: ControlPosition
   bounds?: string
+  name?: string
 }
 
 export const AppIcon: React.FC<IAppIcon> = ({
   children,
   defaultPosition,
   bounds = '.desktop-content',
+  name,
   ...props
 }) => {
   return (
@@ -22,7 +24,7 @@ export const AppIcon: React.FC<IAppIcon> = ({
       bounds={bounds}
       grid={[24, 24]}>
       <Button className="app-icon" size="large" {...props}>
-        {children}
+        <Tooltip title={name}>{children}</Tooltip>
       </Button>
     </Draggable>
   )

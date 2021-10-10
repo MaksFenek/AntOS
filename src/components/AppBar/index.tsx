@@ -1,7 +1,7 @@
 import React from 'react'
 import {Space} from 'antd'
 
-import {AppBarIcon} from './App-bar-icon'
+import {AppBarIcon} from './AppBarIcon'
 import {App} from 'src/redux/types'
 
 interface IAppBar {

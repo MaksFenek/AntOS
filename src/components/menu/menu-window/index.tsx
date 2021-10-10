@@ -1,7 +1,7 @@
 import React from 'react'
 import {Layout} from 'antd'
 
-import {MenuList} from '../Menu-list'
+import {MenuList} from '../MenuList'
 
 import './menu-window.scss'
 

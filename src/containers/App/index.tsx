@@ -44,7 +44,10 @@ export const App: React.FC<IApp> = ({name, icon, window, defaultPosition}) => {
 
   return (
     <>
-      <AppIcon defaultPosition={defaultPosition} onDoubleClick={onClickAppIcon}>
+      <AppIcon
+        name={state?.name}
+        defaultPosition={defaultPosition}
+        onDoubleClick={onClickAppIcon}>
         {icon}
       </AppIcon>
       {state?.isOpen && (
