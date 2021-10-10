@@ -8,12 +8,12 @@
   }
 
   &__header {
-    padding: var(--app-window-header-padding);
-    line-height: 0;
+    padding: var(--app-window-header-padding) !important;
+    line-height: 0 !important;
     display: flex;
     align-items: center;
-    height: var(--app-window-header-height);
-    background: var(--app-window-header-color);
+    height: var(--app-window-header-height) !important;
+    background: var(--app-window-header-color) !important;
   }
 
   &__content {
