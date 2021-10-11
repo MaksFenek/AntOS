@@ -22,5 +22,6 @@
   &__content {
     background: var(--app-window-content-color);
     padding: var(--app-window-content-padding);
+    overflow: scroll;
   }
 }
