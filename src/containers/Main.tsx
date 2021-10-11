@@ -8,11 +8,13 @@ import {
 import {App} from './App'
 import {Desktop} from './DesktopContainer'
 import {ResumeApp} from 'src/apps/Resume'
+import {SkillsApp} from 'src/apps/Skills'
 export const Main: React.FC = () => {
   return (
     <section>
       <Desktop>
         <ResumeApp />
+        <SkillsApp />
         <App
           name="Code"
           icon={<CodeTwoTone style={{fontSize: '30px'}} />}
