@@ -1,25 +1,31 @@
 import React from 'react'
 
-import MenuLayout from 'antd/lib/menu'
+import MenuLayout, {MenuItemProps} from 'antd/lib/menu'
+import {App} from 'src/redux/types'
 
-const {SubMenu, ItemGroup, Item} = MenuLayout
-// TODO: Complete the component after integrate redux
+const {SubMenu, Item} = MenuLayout
 
-export const MenuList: React.FC = () => {
+interface IMenuList {
+  apps: App[] | undefined
+  onAppClick: MenuItemProps['onClick']
+}
+
+export const MenuList: React.FC<IMenuList> = ({apps, onAppClick}) => {
   return (
     <MenuLayout
       defaultSelectedKeys={['1']}
       defaultOpenKeys={['sub1']}
       mode="inline">
-      <SubMenu key="sub1" title="Navigation One">
-        <ItemGroup key="g1" title="Item 1">
-          <Item key="1">Option 1</Item>
-          <Item key="2">Option 2</Item>
-        </ItemGroup>
-        <ItemGroup key="g2" title="Item 2">
-          <Item key="3">Option 3</Item>
-          <Item key="4">Option 4</Item>
-        </ItemGroup>
+      <SubMenu key="sub1" title="Apps">
+        {apps?.map(app => (
+          <Item
+            onClick={onAppClick}
+            title={app.name}
+            icon={app.icon}
+            key={app.name}>
+            {app.name}
+          </Item>
+        ))}
       </SubMenu>
       <SubMenu key="sub2" title="Navigation Two">
         <Item key="5">Option 5</Item>

@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react'
 import {Button} from 'antd'
 import {HomeTwoTone} from '@ant-design/icons'
 
-import {MenuWindow} from './Menu-window'
+import {MenuWindow} from './MenuWindow'
 
 import './menu.scss'
 
