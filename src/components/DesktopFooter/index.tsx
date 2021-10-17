@@ -1,5 +1,5 @@
 import React, {memo, useCallback, useEffect, useState} from 'react'
-import {Layout, Space, DatePicker, TimePicker} from 'antd'
+import {Layout, Space, DatePicker, TimePicker, Divider} from 'antd'
 import moment from 'moment'
 
 import './desktop-footer.scss'
@@ -34,6 +34,7 @@ export const DesktopFooter: React.FC<IDesktopFooter> = memo(
     return (
       <Footer className="desktop-footer">
         {menu}
+        <Divider type="vertical" style={{height: 'auto'}} />
         <Space align="start" className="desktop-footer__bar">
           <Space>{appBar}</Space>
           <Space>
