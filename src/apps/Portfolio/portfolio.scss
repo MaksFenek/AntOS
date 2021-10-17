@@ -1,0 +1,14 @@
+.portfolio {
+  &-item {
+    &__header {
+      font-size: 20px;
+    }
+  }
+}
+
+.dots {
+  button {
+    background: #000 !important;
+    padding: 5px !important;
+  }
+}
