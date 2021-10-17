@@ -10,7 +10,7 @@ export const SkillsApp: React.FC = () => {
       name="Skills"
       icon={<CodeTwoTone style={{fontSize: '30px'}} />}
       window={<SkillsAppContent />}
-      defaultPosition={{x: 0, y: 340}}
+      defaultPosition={{x: 10, y: 160}}
     />
   )
 }

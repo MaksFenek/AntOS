@@ -10,7 +10,7 @@ export const ResumeApp: React.FC = () => {
       name="Resume"
       icon={<BookTwoTone style={{fontSize: '30px'}} />}
       window={<ResumeAppContent />}
-      defaultPosition={{x: 0, y: 240}}
+      defaultPosition={{x: 10, y: 80}}
     />
   )
 }
