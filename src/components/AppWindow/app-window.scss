@@ -1,0 +1,27 @@
+.app-window {
+  position: absolute !important;
+  z-index: 2;
+  opacity: var(--app-window-opacity);
+  &__layout {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border: var(--app-window-layout-border);
+    border-radius: var(--app-window-layout-border-radius);
+  }
+
+  &__header {
+    padding: var(--app-window-header-padding) !important;
+    line-height: 0 !important;
+    display: flex;
+    align-items: center;
+    height: var(--app-window-header-height) !important;
+    background: var(--app-window-header-color) !important;
+  }
+
+  &__content {
+    background: var(--app-window-content-color);
+    padding: var(--app-window-content-padding);
+    overflow: scroll;
+  }
+}

@@ -1,0 +1,31 @@
+:root {
+  // DESKTOP
+  --desktop-footer-color: var(--app-window-header-color);
+  --desktop-footer-height: 50px;
+  --desktop-content-padding: 8px;
+  --desktop-footer-padding: 8px;
+  --desktop-footer-opacity: 0.85;
+
+  // MENU
+  --menu-button-size: 34px;
+  --menu-button-margin: 16px;
+  --menu-window-height: 60vh;
+  --menu-window-width: 400px;
+  --menu-window-border: 1px solid #339fec;
+  --menu-window-border-radius: var(--app-window-layout-border-radius);
+  --menu-window-content-color: var(--app-window-content-color);
+  --menu-window-sider-color: #fafafa;
+
+  // APP
+  --app-icon-size: 48px;
+  --app-icon-opacity: 0.9;
+  --app-icon-background: rgba(189, 228, 253, 0.4);
+  --app-window-opacity: 0.9;
+  --app-window-layout-border: 1px solid #8ccaf7;
+  --app-window-layout-border-radius: 4px;
+  --app-window-content-color: #d0ebfd;
+  --app-window-header-color: #93d2ff;
+  --app-window-header-height: 40px;
+  --app-window-header-padding: 8px;
+  --app-window-content-padding: 10px;
+}
