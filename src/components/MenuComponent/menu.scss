@@ -14,4 +14,30 @@
     display: inline-flex;
     flex-direction: column;
   }
+
+  &-opening {
+    animation: AppWindowAppear ease-out;
+  }
+
+  &-closing {
+    animation: AppWindowClosing ease-in;
+  }
+}
+
+@keyframes AppWindowAppear {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: var(--menu-window-height);
+  }
+}
+
+@keyframes AppWindowClosing {
+  0% {
+    height: var(--menu-window-height);
+  }
+  100% {
+    height: 0;
+  }
 }

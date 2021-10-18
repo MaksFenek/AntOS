@@ -1,19 +1,30 @@
-import React, {useCallback, useState} from 'react'
+import React, {useState} from 'react'
 import {Button} from 'antd'
 import {HomeTwoTone} from '@ant-design/icons'
 
-import {useOutsideClick} from 'src/hooks'
+import {useAnimation, useOutsideClick} from 'src/hooks'
 import {MenuWindow} from './MenuWindow'
 
 import './menu.scss'
 
 export const Menu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const Wrapper = useOutsideClick(setIsMenuOpen)
+  const [AnimatedMenuWindow, onClickMenuButton] = useAnimation({
+    isOpen: isMenuOpen,
+    setIsOpen: setIsMenuOpen,
+    startClassName: 'menu-opening',
+    endClassName: 'menu-closing',
+    animationDuration: 400,
+    Component: MenuWindow,
+  })
 
-  const onClickMenuButton = useCallback(() => {
-    setIsMenuOpen(value => !value)
-  }, [])
+  const onOutsideClick = () => {
+    if (isMenuOpen) {
+      onClickMenuButton()
+    }
+  }
+
+  const Wrapper = useOutsideClick(onOutsideClick)
 
   return (
     <Wrapper>
@@ -24,7 +35,7 @@ export const Menu: React.FC = () => {
         type="text">
         <HomeTwoTone style={{fontSize: '30px'}} />
       </Button>
-      {isMenuOpen && <MenuWindow />}
+      {isMenuOpen && <AnimatedMenuWindow />}
     </Wrapper>
   )
 }
