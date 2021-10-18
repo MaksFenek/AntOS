@@ -7,8 +7,11 @@ import {
   AppWindowErrorBoundary,
   Loader,
 } from 'src/components'
+import {useAnimation} from 'src/hooks'
 import {useAppDispatch, useAppSelector} from 'src/redux/hooks'
 import {addApp, closeApp, openApp, toggleApp} from 'src/redux/slices/apps'
+
+import './app.scss'
 
 interface IApp {
   name: string
@@ -21,6 +24,22 @@ export const App: React.FC<IApp> = memo(
   ({name, icon, window, defaultPosition}) => {
     const state = useAppSelector(store => store.apps.allApps?.[name])
     const dispatch = useAppDispatch()
+
+    const setIsOpen = (value: boolean) => {
+      if (value) {
+        dispatch(openApp(name))
+      } else {
+        dispatch(closeApp(name))
+      }
+    }
+
+    const [AnimatedAppWindow, onClickToggleButton] = useAnimation({
+      isOpen: state?.isOpen,
+      setIsOpen: setIsOpen,
+      startClassName: 'app-window-opening',
+      animationDuration: 300,
+      Component: AppWindow,
+    })
 
     useEffect(() => {
       dispatch(
@@ -37,12 +56,11 @@ export const App: React.FC<IApp> = memo(
     }, [])
 
     const onClickAppIcon = useCallback(() => {
+      if (!state?.isOpen) {
+        onClickToggleButton()
+      }
       dispatch(openApp(name))
-    }, [dispatch, name])
-
-    const onCloseAppWindow = useCallback(() => {
-      dispatch(closeApp(name))
-    }, [dispatch, name])
+    }, [dispatch, name, state?.isOpen, onClickToggleButton])
 
     const onHideAppWindow = useCallback(() => {
       dispatch(toggleApp(name))
@@ -56,16 +74,17 @@ export const App: React.FC<IApp> = memo(
           onDoubleClick={onClickAppIcon}>
           {icon}
         </AppIcon>
-        {state?.isOpen && (
-          <AppWindow
-            style={{display: state.hidden ? 'none' : undefined}}
-            onClose={onCloseAppWindow}
-            onHide={onHideAppWindow}>
-            <AppWindowErrorBoundary>
-              <Loader>{window}</Loader>
-            </AppWindowErrorBoundary>
-          </AppWindow>
-        )}
+        <AnimatedAppWindow
+          style={{
+            display: state?.hidden ? 'none' : undefined,
+            visibility: !state?.isOpen ? 'hidden' : undefined,
+          }}
+          onClose={onClickToggleButton}
+          onHide={onHideAppWindow}>
+          <AppWindowErrorBoundary>
+            <Loader>{window}</Loader>
+          </AppWindowErrorBoundary>
+        </AnimatedAppWindow>
       </>
     )
   },

@@ -13,8 +13,7 @@ export const Menu: React.FC = () => {
     isOpen: isMenuOpen,
     setIsOpen: setIsMenuOpen,
     startClassName: 'menu-opening',
-    endClassName: 'menu-closing',
-    animationDuration: 400,
+    animationDuration: 300,
     Component: MenuWindow,
   })
 

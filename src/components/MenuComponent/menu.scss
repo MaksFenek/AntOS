@@ -16,28 +16,15 @@
   }
 
   &-opening {
-    animation: AppWindowAppear ease-out;
-  }
-
-  &-closing {
-    animation: AppWindowClosing ease-in;
+    animation: MenuWindowAppear ease-out;
   }
 }
 
-@keyframes AppWindowAppear {
+@keyframes MenuWindowAppear {
   0% {
     height: 0;
   }
   100% {
     height: var(--menu-window-height);
-  }
-}
-
-@keyframes AppWindowClosing {
-  0% {
-    height: var(--menu-window-height);
-  }
-  100% {
-    height: 0;
   }
 }

@@ -1,17 +1,16 @@
-import React, {HTMLAttributes, useState} from 'react'
+import React, {useState} from 'react'
 
 interface useAnimationTypes {
   startClassName: string
-  endClassName: string
   animationDuration: number
-  isOpen: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  Component: React.FC<HTMLAttributes<HTMLElement>>
+  isOpen?: boolean
+  setIsOpen: (value: boolean) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Component: React.FC<any>
 }
 
 export function useAnimation({
   startClassName,
-  endClassName,
   animationDuration,
   isOpen,
   setIsOpen,
@@ -24,21 +23,35 @@ export function useAnimation({
 
   const onClick = () => {
     setClosing(value => !value)
-    if (isOpen) {
-      setTimeout(() => {
-        setIsOpen(false)
-      }, animationDuration)
-    } else setIsOpen(true)
+    if (!isOpen) {
+      setIsOpen(true)
+    }
+  }
+  const handleAnimationEnd = () => {
+    if (isOpen && closing) {
+      setIsOpen(false)
+    }
   }
 
   const Animate: React.FC<React.ComponentProps<typeof Component>> = ({
     children,
+    className,
+    onAnimationEnd,
+    style = {},
     ...props
   }) => (
     <Component
-      className={`${startClassName} ${closing ? endClassName : ''}`}
-      // "+ 20" need for fixing broken framerate
-      style={{animationDuration: animationDuration + 20 + 'ms'}}
+      className={`${className} ${startClassName}`}
+      onAnimationEnd={() => {
+        if (onAnimationEnd) {
+          onAnimationEnd()
+        }
+        handleAnimationEnd()
+      }}
+      style={Object.assign(style, {
+        animationDirection: closing ? 'alternate-reverse' : 'alternate',
+        animationDuration: animationDuration + 'ms',
+      })}
       {...props}>
       {children}
     </Component>

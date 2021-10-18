@@ -1,5 +1,5 @@
 import React, {memo} from 'react'
-import {Layout, Button, Space} from 'antd'
+import {Layout, Button, Space, LayoutProps} from 'antd'
 import {Resizable} from 're-resizable'
 import Draggable from 'react-draggable'
 import {CloseOutlined, LineOutlined} from '@ant-design/icons'
@@ -8,14 +8,14 @@ import './app-window.scss'
 
 const {Header, Content} = Layout
 
-interface IAppWindow {
+interface IAppWindow extends LayoutProps {
   onClose?: () => void
   onHide?: () => void
   style?: React.CSSProperties
 }
 
 export const AppWindow: React.FC<IAppWindow> = memo(
-  ({children, style, onClose, onHide}) => {
+  ({children, style, onClose, onHide, className, ...props}) => {
     return (
       <div style={style}>
         <Draggable
@@ -24,8 +24,8 @@ export const AppWindow: React.FC<IAppWindow> = memo(
           bounds=".desktop"
           defaultClassName="app-window"
           defaultPosition={{
-            x: 100,
-            y: 100,
+            x: window.innerWidth / 2 - 300,
+            y: window.innerHeight / 2 - 200,
           }}>
           <Resizable
             minWidth="300"
@@ -34,7 +34,10 @@ export const AppWindow: React.FC<IAppWindow> = memo(
               height: 400,
               width: 500,
             }}>
-            <Layout className="app-window__layout" style={style}>
+            <Layout
+              className={`app-window__layout ${className}`}
+              style={style}
+              {...props}>
               <Header className="handle app-window__header">
                 <Space align="center">
                   <Button
