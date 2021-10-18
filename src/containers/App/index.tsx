@@ -1,8 +1,12 @@
 import React, {memo, useCallback, useEffect} from 'react'
 import {ControlPosition} from 'react-draggable'
 
-import {AppIcon, AppWindow} from 'src/components'
-import {Loader} from 'src/components/Loader'
+import {
+  AppIcon,
+  AppWindow,
+  AppWindowErrorBoundary,
+  Loader,
+} from 'src/components'
 import {useAppDispatch, useAppSelector} from 'src/redux/hooks'
 import {addApp, closeApp, openApp, toggleApp} from 'src/redux/slices/apps'
 
@@ -57,7 +61,9 @@ export const App: React.FC<IApp> = memo(
             style={{display: state.hidden ? 'none' : undefined}}
             onClose={onCloseAppWindow}
             onHide={onHideAppWindow}>
-            <Loader>{window}</Loader>
+            <AppWindowErrorBoundary>
+              <Loader>{window}</Loader>
+            </AppWindowErrorBoundary>
           </AppWindow>
         )}
       </>
