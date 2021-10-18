@@ -1,0 +1,22 @@
+.skills-list {
+  &-item {
+    transform: translateX(100%);
+    animation: SkillListItemAppear 300ms ease-out forwards;
+
+    &_done {
+      transform: translateX(0) !important;
+    }
+  }
+}
+
+@keyframes SkillListItemAppear {
+  0% {
+    transform: translateX(100%);
+  }
+  70% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
