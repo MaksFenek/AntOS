@@ -8,6 +8,7 @@
   border-right: var(--menu-window-border);
   border-top-right-radius: var(--menu-window-border-radius);
   left: 0;
+  z-index: 10;
 
   &__sider {
     background: var(--menu-window-sider-color) !important;

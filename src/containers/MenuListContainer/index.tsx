@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo} from 'react'
-import {MenuList} from 'src/components/Menu/MenuList'
+import {MenuList} from 'src/components/MenuComponent/MenuList'
 import {useAppDispatch, useAppSelector} from 'src/redux/hooks'
 import {openApp} from 'src/redux/slices/apps'
 

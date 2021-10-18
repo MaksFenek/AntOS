@@ -9,4 +9,9 @@
     align-items: center;
     overflow: hidden;
   }
+
+  &-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+  }
 }

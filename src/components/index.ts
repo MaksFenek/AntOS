@@ -1,5 +1,5 @@
 export {AppWindow} from './AppWindow'
 export {AppIcon} from './AppIcon'
 export {DesktopFooter} from './DesktopFooter'
-export {Menu} from './Menu'
+export {Menu} from './MenuComponent'
 export {AppBar} from './AppBar'
