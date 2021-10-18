@@ -2,7 +2,7 @@ import React from 'react'
 import {App} from 'src/containers/App'
 import {CodeTwoTone} from '@ant-design/icons'
 
-import {SkillsAppContent} from './content'
+const SkillsAppContent = React.lazy(() => import('./content'))
 
 export const SkillsApp: React.FC = () => {
   return (

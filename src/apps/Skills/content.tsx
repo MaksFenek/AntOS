@@ -15,7 +15,7 @@ import {
 
 const {SubMenu} = Menu
 
-export const SkillsAppContent: React.FC = () => {
+const SkillsAppContent: React.FC = () => {
   return (
     <section>
       <Menu style={{background: 'none', border: 'none'}} mode="inline">
@@ -77,3 +77,5 @@ export const SkillsAppContent: React.FC = () => {
     </section>
   )
 }
+
+export default SkillsAppContent

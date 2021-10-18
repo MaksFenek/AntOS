@@ -8,7 +8,7 @@ import Menu from './gifs/menu.gif'
 
 const {Title, Text} = Typography
 
-export const HelpAppContent: React.FC = () => {
+const HelpAppContent: React.FC = () => {
   return (
     <section>
       <Title level={2}>Справка</Title>
@@ -56,3 +56,5 @@ export const HelpAppContent: React.FC = () => {
     </section>
   )
 }
+
+export default HelpAppContent

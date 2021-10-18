@@ -1,7 +1,8 @@
 import React from 'react'
 import {App} from 'src/containers/App'
 import {QuestionCircleTwoTone} from '@ant-design/icons'
-import {HelpAppContent} from './content'
+
+const HelpAppContent = React.lazy(() => import('./content'))
 
 export const HelpApp: React.FC = () => {
   return (

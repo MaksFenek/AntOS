@@ -19,7 +19,7 @@ import MWMainPage from './images/miniWeather/main.png'
 import './portfolio.scss'
 const {Title, Text, Paragraph} = Typography
 
-export const PortfolioAppContent: React.FC = () => {
+const PortfolioAppContent: React.FC = () => {
   return (
     <section>
       <Title level={2}>Портфолио</Title>
@@ -228,3 +228,5 @@ export const PortfolioAppContent: React.FC = () => {
     </section>
   )
 }
+
+export default PortfolioAppContent

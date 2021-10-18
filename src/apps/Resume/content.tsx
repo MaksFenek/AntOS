@@ -4,7 +4,7 @@ import {Divider, Space, Typography, Steps, Timeline, Button} from 'antd'
 const {Title, Paragraph, Text} = Typography
 const {Step} = Steps
 
-export const ResumeAppContent: React.FC = () => {
+const ResumeAppContent: React.FC = () => {
   return (
     <section>
       <Title level={2}>Привет! Меня зовут Артур.</Title>
@@ -95,3 +95,5 @@ export const ResumeAppContent: React.FC = () => {
     </section>
   )
 }
+
+export default ResumeAppContent
