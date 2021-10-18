@@ -1,20 +1,20 @@
 import React from 'react'
 import {Carousel, Divider, Space, Typography, Timeline} from 'antd'
 
-import DEWelcomePage from './images/digitalEstate/welcome.png'
-import DESearchPage from './images/digitalEstate/search.png'
-import DEProductPage from './images/digitalEstate/product.png'
+import DEWelcomePage from './images/digitalEstate/welcome.webp'
+import DESearchPage from './images/digitalEstate/search.webp'
+import DEProductPage from './images/digitalEstate/product.webp'
 
-import LSWelcomePage from './images/liteScreen/welcome.png'
-import LSFriendsPage from './images/liteScreen/friends.png'
-import LSProfilePage from './images/liteScreen/profile.png'
-import LSMessagesPage from './images/liteScreen/messages.png'
-import LSChatPage from './images/liteScreen/chat.png'
+import LSWelcomePage from './images/liteScreen/welcome.webp'
+import LSFriendsPage from './images/liteScreen/friends.webp'
+import LSProfilePage from './images/liteScreen/profile.webp'
+import LSMessagesPage from './images/liteScreen/messages.webp'
+import LSChatPage from './images/liteScreen/chat.webp'
 
-import MDarkPage from './images/messenger/dark.png'
-import MLightPage from './images/messenger/light.png'
+import MDarkPage from './images/messenger/dark.webp'
+import MLightPage from './images/messenger/light.webp'
 
-import MWMainPage from './images/miniWeather/main.png'
+import MWMainPage from './images/miniWeather/main.webp'
 
 import './portfolio.scss'
 const {Title, Text, Paragraph} = Typography

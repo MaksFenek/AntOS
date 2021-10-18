@@ -25,7 +25,7 @@ const HelpAppContent: React.FC = () => {
         Чтобы переместить иконку приложения, необходимо кликнуть по нему и
         перетащить.
       </Text>
-      <Image src={Move} />
+      <Image loading="lazy" src={Move} />
       <Title level={4}>Закрытие и скрытие приложений</Title>
       <Text>
         Чтобы закрыть приложение, необходимо нажать на кнопку "Х" в левом
@@ -39,20 +39,20 @@ const HelpAppContent: React.FC = () => {
         будет снова открыть нажав на иконку приложения в нижнем списке
         приложений.
       </Text>
-      <Image src={Close} />
+      <Image loading="lazy" src={Close} />
       <Title level={4}>Изменение размеров окна</Title>
       <Text>
         Чтобы изменить размер окна приложения, нужно потянуть за любой край
         окна, как в любых ОС.
       </Text>
-      <Image src={Resize} />
+      <Image loading="lazy" src={Resize} />
       <Title level={4}>Меню</Title>
       <Text>
         В левом нижнем углу находится иконка "Меню", нажав на которую откроется
         меню, которое будет содержать все приложения и некоторую другую
         информацию.
       </Text>
-      <Image src={Menu} />
+      <Image loading="lazy" src={Menu} />
     </section>
   )
 }
