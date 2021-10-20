@@ -1,22 +1,32 @@
 import React from 'react'
-import {Layout, LayoutProps} from 'antd'
+import {MenuList} from '../MenuList'
+
+import {animated, useSpring, config} from 'react-spring'
 
 import './menu-window.scss'
-import {MenuListContainer} from 'src/containers/MenuListContainer'
+interface IMenuWindow {
+  closing: boolean
+}
 
-const {Sider, Content} = Layout
+export const MenuWindow: React.FC<IMenuWindow> = ({closing = true}) => {
+  const styles = useSpring({
+    from: {
+      height: '0vh',
+      borderWidth: 0,
+      opacity: 0,
+    },
+    to: {
+      height: '60vh',
+      borderWidth: 1,
+      opacity: 1,
+    },
+    config: config.gentle,
+    reverse: closing,
+  })
 
-export const MenuWindow: React.FC<LayoutProps> = ({
-  children,
-  className,
-  ...props
-}) => {
   return (
-    <Layout className={`menu-window ${className}`} {...props}>
-      <Sider className="menu-window__sider">
-        <MenuListContainer />
-      </Sider>
-      <Content className="menu-window__content">{children}</Content>
-    </Layout>
+    <animated.div style={styles} className="menu-window">
+      <MenuList />
+    </animated.div>
   )
 }

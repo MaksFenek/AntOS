@@ -9,22 +9,4 @@
     align-items: center;
     overflow: hidden;
   }
-
-  &-wrapper {
-    display: inline-flex;
-    flex-direction: column;
-  }
-
-  &-opening {
-    animation: MenuWindowAppear ease-out;
-  }
-}
-
-@keyframes MenuWindowAppear {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: var(--menu-window-height);
-  }
 }

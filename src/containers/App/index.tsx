@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useEffect} from 'react'
+import React, {memo, useCallback, useEffect, useState} from 'react'
 import {ControlPosition} from 'react-draggable'
 
 import {
@@ -7,9 +7,9 @@ import {
   AppWindowErrorBoundary,
   Loader,
 } from 'src/components'
-import {useAnimation} from 'src/hooks'
 import {useAppDispatch, useAppSelector} from 'src/redux/hooks'
 import {addApp, closeApp, openApp, toggleApp} from 'src/redux/slices/apps'
+import {delay} from 'src/utils/delay'
 
 import './app.scss'
 
@@ -25,21 +25,7 @@ export const App: React.FC<IApp> = memo(
     const state = useAppSelector(store => store.apps.allApps?.[name])
     const dispatch = useAppDispatch()
 
-    const setIsOpen = (value: boolean) => {
-      if (value) {
-        dispatch(openApp(name))
-      } else {
-        dispatch(closeApp(name))
-      }
-    }
-
-    const [AnimatedAppWindow, onClickToggleButton] = useAnimation({
-      isOpen: state?.isOpen,
-      setIsOpen: setIsOpen,
-      startClassName: 'app-window-opening',
-      animationDuration: 300,
-      Component: AppWindow,
-    })
+    const [opened, setOpened] = useState(false)
 
     useEffect(() => {
       dispatch(
@@ -55,15 +41,22 @@ export const App: React.FC<IApp> = memo(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const removeAppFromScreen = () => {
+      setOpened(false)
+    }
+
     const onClickAppIcon = useCallback(() => {
-      if (!state?.isOpen) {
-        onClickToggleButton()
-      }
+      setOpened(true)
       dispatch(openApp(name))
-    }, [dispatch, name, state?.isOpen, onClickToggleButton])
+    }, [dispatch, name])
 
     const onHideAppWindow = useCallback(() => {
       dispatch(toggleApp(name))
+    }, [dispatch, name])
+
+    const onCloseAppWindow = useCallback(() => {
+      dispatch(closeApp(name))
+      delay(1000, removeAppFromScreen)
     }, [dispatch, name])
 
     return (
@@ -74,17 +67,17 @@ export const App: React.FC<IApp> = memo(
           onDoubleClick={onClickAppIcon}>
           {icon}
         </AppIcon>
-        <AnimatedAppWindow
-          style={{
-            display: state?.hidden ? 'none' : undefined,
-            visibility: !state?.isOpen ? 'hidden' : undefined,
-          }}
-          onClose={onClickToggleButton}
-          onHide={onHideAppWindow}>
-          <AppWindowErrorBoundary>
-            <Loader>{window}</Loader>
-          </AppWindowErrorBoundary>
-        </AnimatedAppWindow>
+        {opened && (
+          <AppWindow
+            isOpen={state?.isOpen}
+            hidden={state?.hidden}
+            onClose={onCloseAppWindow}
+            onHide={onHideAppWindow}>
+            <AppWindowErrorBoundary>
+              <Loader>{window}</Loader>
+            </AppWindowErrorBoundary>
+          </AppWindow>
+        )}
       </>
     )
   },
