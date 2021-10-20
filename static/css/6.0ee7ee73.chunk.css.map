@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/apps/Portfolio/portfolio.scss"],"names":[],"mappings":"AAEI,wBACE,cAAe,CAChB,aAMD,yBAA2B,CAC3B,qBAAuB","file":"6.0ee7ee73.chunk.css","sourcesContent":[".portfolio {\n  &-item {\n    &__header {\n      font-size: 20px;\n    }\n  }\n}\n\n.dots {\n  button {\n    background: #000 !important;\n    padding: 5px !important;\n  }\n}\n"]}
