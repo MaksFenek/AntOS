@@ -1,7 +1,9 @@
 import React from 'react'
+
 import {App} from 'src/containers/App'
 import {FilePptTwoTone} from '@ant-design/icons'
-import {PortfolioAppContent} from './content'
+
+const PortfolioAppContent = React.lazy(() => import('./content'))
 
 export const PortfolioApp: React.FC = () => {
   return (

@@ -1,15 +1,23 @@
-import React, {memo, useCallback} from 'react'
+import React, {memo, useCallback, useMemo} from 'react'
 import {AppBar} from 'src/components'
-import {useAppDispatch} from 'src/redux/hooks'
+import {useAppDispatch, useAppSelector} from 'src/redux/hooks'
 import {toggleApp} from 'src/redux/slices/apps'
 import {App} from 'src/redux/types'
 
-interface IAppBarContainer {
-  apps: App[]
-}
-
-export const AppBarContainer: React.FC<IAppBarContainer> = memo(({apps}) => {
+export const AppBarContainer: React.FC = memo(() => {
   const dispatch = useAppDispatch()
+  const state = useAppSelector(store => store.apps.allApps)
+
+  const apps = useMemo(() => {
+    const all: App[] = []
+    for (const key in state) {
+      const app = state[key]
+      if (app) {
+        all.push(app)
+      }
+    }
+    return all
+  }, [state])
 
   const onAppClick = useCallback(
     name => {

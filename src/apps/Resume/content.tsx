@@ -1,12 +1,23 @@
 import React from 'react'
 import {Divider, Space, Typography, Steps, Timeline, Button} from 'antd'
+import {animated, config, useSpring} from 'react-spring'
 
 const {Title, Paragraph, Text} = Typography
 const {Step} = Steps
 
-export const ResumeAppContent: React.FC = () => {
+const ResumeAppContent: React.FC = () => {
+  const styles = useSpring({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    delay: 200,
+    config: config.gentle,
+  })
   return (
-    <section>
+    <animated.section style={styles}>
       <Title level={2}>Привет! Меня зовут Артур.</Title>
       <Title level={3}>Я frontend разработчик.</Title>
       <Text>
@@ -92,6 +103,8 @@ export const ResumeAppContent: React.FC = () => {
           </Button>
         </Text>
       </Space>
-    </section>
+    </animated.section>
   )
 }
+
+export default ResumeAppContent

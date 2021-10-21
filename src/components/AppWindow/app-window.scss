@@ -22,6 +22,20 @@
   &__content {
     background: var(--app-window-content-color);
     padding: var(--app-window-content-padding);
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar-track {
+      border-radius: 0.125rem;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+      border-radius: 0.125rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0.25rem;
+      background-color: gray;
+    }
   }
 }

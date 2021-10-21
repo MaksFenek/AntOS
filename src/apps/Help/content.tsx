@@ -5,12 +5,23 @@ import Move from './gifs/move.gif'
 import Close from './gifs/close.gif'
 import Resize from './gifs/resize.gif'
 import Menu from './gifs/menu.gif'
+import {animated, config, useSpring} from 'react-spring'
 
 const {Title, Text} = Typography
 
-export const HelpAppContent: React.FC = () => {
+const HelpAppContent: React.FC = () => {
+  const styles = useSpring({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    delay: 200,
+    config: config.gentle,
+  })
   return (
-    <section>
+    <animated.section style={styles}>
       <Title level={2}>Справка</Title>
       <Divider />
       <Title level={3}>Возможности приложения</Title>
@@ -53,6 +64,8 @@ export const HelpAppContent: React.FC = () => {
         информацию.
       </Text>
       <Image loading="lazy" src={Menu} />
-    </section>
+    </animated.section>
   )
 }
+
+export default HelpAppContent

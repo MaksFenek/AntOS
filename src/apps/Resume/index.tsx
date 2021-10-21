@@ -2,7 +2,7 @@ import React from 'react'
 import {App} from 'src/containers/App'
 import {BookTwoTone} from '@ant-design/icons'
 
-import {ResumeAppContent} from './content'
+const ResumeAppContent = React.lazy(() => import('./content'))
 
 export const ResumeApp: React.FC = () => {
   return (

@@ -10,7 +10,7 @@
   --menu-button-size: 34px;
   --menu-button-margin: 16px;
   --menu-window-height: 60vh;
-  --menu-window-width: 400px;
+  --menu-window-width: 300px;
   --menu-window-border: 1px solid #339fec;
   --menu-window-border-radius: var(--app-window-layout-border-radius);
   --menu-window-content-color: var(--app-window-content-color);
@@ -28,4 +28,13 @@
   --app-window-header-height: 40px;
   --app-window-header-padding: 8px;
   --app-window-content-padding: 10px;
+
+  // WIDGET
+  --widget-min-height: 200px;
+  --widget-min-width: 200px;
+  --widget-opacity: var(--app-window-opacity);
+  --widget-border: var(--app-window-layout-border);
+  --widget-border-radius: 10px;
+  --widget-background: #85c8f5;
+  --widget-padding: var(--app-window-content-padding);
 }

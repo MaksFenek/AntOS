@@ -1,9 +1,17 @@
-import React, {memo, useCallback, useEffect} from 'react'
+import React, {memo, useCallback, useEffect, useState} from 'react'
 import {ControlPosition} from 'react-draggable'
 
-import {AppIcon, AppWindow} from 'src/components'
+import {
+  AppIcon,
+  AppWindow,
+  AppWindowErrorBoundary,
+  Loader,
+} from 'src/components'
 import {useAppDispatch, useAppSelector} from 'src/redux/hooks'
 import {addApp, closeApp, openApp, toggleApp} from 'src/redux/slices/apps'
+import {delay} from 'src/utils/delay'
+
+import './app.scss'
 
 interface IApp {
   name: string
@@ -16,6 +24,8 @@ export const App: React.FC<IApp> = memo(
   ({name, icon, window, defaultPosition}) => {
     const state = useAppSelector(store => store.apps.allApps?.[name])
     const dispatch = useAppDispatch()
+
+    const [opened, setOpened] = useState(false)
 
     useEffect(() => {
       dispatch(
@@ -31,16 +41,22 @@ export const App: React.FC<IApp> = memo(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const onClickAppIcon = useCallback(() => {
-      dispatch(openApp(name))
-    }, [dispatch, name])
+    const removeAppFromScreen = () => {
+      setOpened(false)
+    }
 
-    const onCloseAppWindow = useCallback(() => {
-      dispatch(closeApp(name))
+    const onClickAppIcon = useCallback(() => {
+      setOpened(true)
+      dispatch(openApp(name))
     }, [dispatch, name])
 
     const onHideAppWindow = useCallback(() => {
       dispatch(toggleApp(name))
+    }, [dispatch, name])
+
+    const onCloseAppWindow = useCallback(() => {
+      dispatch(closeApp(name))
+      delay(500, removeAppFromScreen)
     }, [dispatch, name])
 
     return (
@@ -51,12 +67,15 @@ export const App: React.FC<IApp> = memo(
           onDoubleClick={onClickAppIcon}>
           {icon}
         </AppIcon>
-        {state?.isOpen && (
+        {opened && (
           <AppWindow
-            style={{display: state.hidden ? 'none' : undefined}}
+            isOpen={state?.isOpen}
+            hidden={state?.hidden}
             onClose={onCloseAppWindow}
             onHide={onHideAppWindow}>
-            {window}
+            <AppWindowErrorBoundary>
+              <Loader>{window}</Loader>
+            </AppWindowErrorBoundary>
           </AppWindow>
         )}
       </>

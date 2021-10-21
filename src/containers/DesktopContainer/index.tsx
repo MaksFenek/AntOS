@@ -1,7 +1,7 @@
 import React from 'react'
 import {Layout} from 'antd'
 
-import {DesktopFooterContainer} from '../DesktopFooterContainer'
+import {DesktopFooter} from 'src/components'
 
 import './desktop.scss'
 
@@ -11,7 +11,7 @@ export const Desktop: React.FC = ({children}) => {
   return (
     <Layout className="desktop">
       <Content className="desktop-content">{children}</Content>
-      <DesktopFooterContainer />
+      <DesktopFooter />
     </Layout>
   )
 }

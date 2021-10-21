@@ -1,7 +1,6 @@
 import React from 'react'
 
-import MenuLayout, {MenuItemProps} from 'antd/lib/menu'
-import {App} from 'src/redux/types'
+import MenuLayout from 'antd/lib/menu'
 import {GithubOutlined, FileTextFilled} from '@ant-design/icons'
 
 import TgIcon from 'src/assets/tg.svg'
@@ -9,29 +8,10 @@ import Gmail from 'src/assets/gmail.svg'
 
 const {SubMenu, Item} = MenuLayout
 
-interface IMenuList {
-  apps: App[] | undefined
-  onAppClick: MenuItemProps['onClick']
-}
-
-export const MenuList: React.FC<IMenuList> = ({apps, onAppClick}) => {
+export const MenuList: React.FC = () => {
   return (
-    <MenuLayout
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
-      mode="inline">
-      <SubMenu key="sub1" title="Apps">
-        {apps?.map(app => (
-          <Item
-            onClick={onAppClick}
-            title={app.name}
-            icon={app.icon}
-            key={app.name}>
-            {app.name}
-          </Item>
-        ))}
-      </SubMenu>
-      <SubMenu key="sub2" title="Contacts">
+    <MenuLayout defaultOpenKeys={['contacts']} mode="inline">
+      <SubMenu key="contacts" title="Contacts">
         <Item icon={<GithubOutlined style={{fontSize: '30px'}} />} key="github">
           <a
             target="_blank"

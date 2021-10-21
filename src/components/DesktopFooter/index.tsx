@@ -1,53 +1,27 @@
-import React, {memo, useCallback, useEffect, useState} from 'react'
-import {Layout, Space, DatePicker, TimePicker, Divider} from 'antd'
-import moment from 'moment'
+import React from 'react'
+import {Layout, Space, Divider} from 'antd'
+
+import {Menu} from '../index'
+import {AppBarContainer} from 'src/containers/AppBarContainer'
+import {Date} from '../Date'
 
 import './desktop-footer.scss'
 
 const {Footer} = Layout
 
-interface IDesktopFooter {
-  menu: React.ReactNode
-  appBar: React.ReactNode
-}
-
-export const DesktopFooter: React.FC<IDesktopFooter> = memo(
-  ({menu, appBar}) => {
-    const [time, setTime] = useState<moment.Moment>()
-    const [date, setDate] = useState<moment.Moment>()
-
-    useEffect(() => {
-      setTime(moment())
-      setDate(moment())
-      const interval = setInterval(() => {
-        setTime(moment())
-      }, 1000)
-      return () => {
-        clearInterval(interval)
-      }
-    }, [])
-
-    const onDateChange = useCallback(date => {
-      setDate(date)
-    }, [])
-
-    return (
-      <Footer className="desktop-footer">
-        {menu}
-        <Divider type="vertical" style={{height: 'auto'}} />
-        <Space align="start" className="desktop-footer__bar">
-          <Space>{appBar}</Space>
-          <Space>
-            <TimePicker bordered={false} allowClear={false} value={time} />
-            <DatePicker
-              onChange={onDateChange}
-              bordered={false}
-              allowClear={false}
-              value={date}
-            />
-          </Space>
+export const DesktopFooter: React.FC = () => {
+  return (
+    <Footer className="desktop-footer">
+      <Menu />
+      <Divider type="vertical" style={{height: 'auto'}} />
+      <Space align="start" className="desktop-footer__bar">
+        <Space>
+          <AppBarContainer />
         </Space>
-      </Footer>
-    )
-  },
-)
+        <Space>
+          <Date />
+        </Space>
+      </Space>
+    </Footer>
+  )
+}
