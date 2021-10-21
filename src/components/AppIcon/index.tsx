@@ -1,3 +1,5 @@
+import {config, useSpring} from '@react-spring/core'
+import {animated} from '@react-spring/web'
 import React, {memo} from 'react'
 import Draggable, {ControlPosition} from 'react-draggable'
 
@@ -17,16 +19,28 @@ export const AppIcon: React.FC<IAppIcon> = memo(
     name,
     ...props
   }) => {
+    const styles = useSpring({
+      from: {
+        transform: 'scale(0)',
+      },
+      to: {
+        transform: 'scale(1)',
+      },
+      delay: 300,
+      config: config.gentle,
+    })
     return (
       <Draggable
         defaultPosition={defaultPosition}
         handle=".app-icon__handle"
         bounds={bounds}>
         <div className="app-icon__handle">
-          <div className="app-icon" {...props}>
+          <animated.div style={styles} className="app-icon" {...props}>
             {children}
-          </div>
-          <span className="app-icon__name">{name}</span>
+          </animated.div>
+          <animated.span style={styles} className="app-icon__name">
+            {name}
+          </animated.span>
         </div>
       </Draggable>
     )
