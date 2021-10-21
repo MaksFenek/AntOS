@@ -7,11 +7,13 @@ import {PortfolioApp} from 'src/apps/Portfolio'
 import {HelpApp} from 'src/apps/Help'
 import {WarningModal} from 'src/components/WarningModal'
 import {AccountApp} from 'src/apps/Account'
+import {ClockWidget} from 'src/widgets/clock'
 
 export const Main: React.FC = () => {
   return (
     <section>
       <Desktop>
+        <ClockWidget />
         <AccountApp />
         <HelpApp />
         <PortfolioApp />

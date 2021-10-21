@@ -1,0 +1,12 @@
+.widget {
+  position: absolute !important;
+  z-index: 2;
+  opacity: var(--widget-opacity);
+  &-layout {
+    overflow: hidden;
+    border: var(--widget-border);
+    border-radius: var(--widget-border-radius);
+    background: var(--widget-background);
+    padding: var(--widget-padding);
+  }
+}
