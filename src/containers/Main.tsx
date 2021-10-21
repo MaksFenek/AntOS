@@ -6,11 +6,13 @@ import {SkillsApp} from 'src/apps/Skills'
 import {PortfolioApp} from 'src/apps/Portfolio'
 import {HelpApp} from 'src/apps/Help'
 import {WarningModal} from 'src/components/WarningModal'
+import {AccountApp} from 'src/apps/Account'
 
 export const Main: React.FC = () => {
   return (
     <section>
       <Desktop>
+        <AccountApp />
         <HelpApp />
         <PortfolioApp />
         <ResumeApp />
