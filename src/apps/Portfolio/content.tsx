@@ -17,11 +17,22 @@ import MLightPage from './images/messenger/light.webp'
 import MWMainPage from './images/miniWeather/main.webp'
 
 import './portfolio.scss'
+import {animated, config, useSpring} from 'react-spring'
 const {Title, Text, Paragraph} = Typography
 
 const PortfolioAppContent: React.FC = () => {
+  const styles = useSpring({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    delay: 200,
+    config: config.gentle,
+  })
   return (
-    <section>
+    <animated.section style={styles}>
       <Title level={2}>Портфолио</Title>
       <Text>Здесь собраны все мои личные проекты.</Text>
       <Divider />
@@ -225,7 +236,7 @@ const PortfolioAppContent: React.FC = () => {
         </Paragraph>
         <Divider />
       </article>
-    </section>
+    </animated.section>
   )
 }
 

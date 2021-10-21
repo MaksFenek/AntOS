@@ -13,26 +13,21 @@ export const AppBarIcon: React.FC<IAppBarIcon> = memo(
   ({children, isOpen, ...props}) => {
     const styles = useSpring({
       from: {
-        x: 0,
+        transform: 'scale(0)',
+        padding: '0px',
+        width: '0px',
       },
-      x: 1,
+      to: {
+        transform: 'scale(1)',
+        padding: '4px',
+        width: '38px',
+      },
       reverse: !isOpen,
-      config: config.default,
+      config: config.gentle,
     })
 
     return (
-      <animated.div
-        style={{
-          transform: styles.x
-            .to([0, 0.5, 0.75, 1], [0, 0.75, 1.2, 1])
-            .to(x => `scale(${x})`),
-          padding: styles.x
-            .to([0, 0.45, 0.75, 1], [1, 2, 3, 4])
-            .to(x => `0 ${x}px`),
-          width: styles.x
-            .to([0, 0.45, 0.75, 1], [0, 12, 25, 38])
-            .to(x => `${x}px`),
-        }}>
+      <animated.div style={styles}>
         <Button className="app-bar-icon" size="middle" type="text" {...props}>
           {children}
         </Button>

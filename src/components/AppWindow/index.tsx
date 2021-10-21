@@ -27,8 +27,14 @@ export const AppWindow: React.FC<IAppWindow> = memo(
     ...props
   }) => {
     const appearStyles = useSpring({
-      from: {x: 0},
-      x: 1,
+      from: {
+        transform: 'scale(0)',
+        opacity: 0,
+      },
+      to: {
+        transform: 'scale(1)',
+        opacity: 1,
+      },
       config: config.gentle,
       reverse: !isOpen,
     })
@@ -45,61 +51,53 @@ export const AppWindow: React.FC<IAppWindow> = memo(
       reverse: hidden,
     })
     return (
-      <animated.div style={hiddenStyles}>
-        <animated.div
-          style={{
-            transform: appearStyles.x
-              .to({
-                range: [0, 1],
-                output: [0, 1],
-              })
-              .to(x => `scale(${x})`),
-            opacity: appearStyles.x.to(
-              [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
-              [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
-            ),
-          }}>
-          <Draggable
-            handle=".handle"
-            cancel=".non-draggable"
-            bounds=".desktop"
-            defaultClassName="app-window"
-            defaultPosition={{
-              x: window.innerWidth / 2 - 300,
-              y: window.innerHeight / 2 - 200,
-            }}>
-            <Resizable
-              minWidth="300"
-              minHeight="300"
-              defaultSize={{
-                height: 400,
-                width: 500,
+      <div className="" style={{position: 'relative', zIndex: 3}}>
+        <animated.div style={hiddenStyles}>
+          <animated.div style={appearStyles}>
+            <Draggable
+              handle=".handle"
+              cancel=".non-draggable"
+              bounds=".desktop"
+              defaultClassName="app-window"
+              defaultPosition={{
+                x: window.innerWidth / 2 - 300,
+                y: window.innerHeight / 2 - 200,
               }}>
-              <Layout className={`app-window__layout ${className}`} {...props}>
-                <Header className="handle app-window__header">
-                  <Space align="center">
-                    <Button
-                      className="non-draggable"
-                      onClick={onClose}
-                      size="small"
-                      type="primary"
-                      icon={<CloseOutlined />}
-                    />
-                    <Button
-                      className="non-draggable"
-                      onClick={onHide}
-                      size="small"
-                      type="primary"
-                      icon={<LineOutlined />}
-                    />
-                  </Space>
-                </Header>
-                <Content className="app-window__content">{children}</Content>
-              </Layout>
-            </Resizable>
-          </Draggable>
+              <Resizable
+                minWidth="300"
+                minHeight="300"
+                defaultSize={{
+                  height: 400,
+                  width: 500,
+                }}>
+                <Layout
+                  className={`app-window__layout ${className}`}
+                  {...props}>
+                  <Header className="handle app-window__header">
+                    <Space align="center">
+                      <Button
+                        className="non-draggable"
+                        onClick={onClose}
+                        size="small"
+                        type="primary"
+                        icon={<CloseOutlined />}
+                      />
+                      <Button
+                        className="non-draggable"
+                        onClick={onHide}
+                        size="small"
+                        type="primary"
+                        icon={<LineOutlined />}
+                      />
+                    </Space>
+                  </Header>
+                  <Content className="app-window__content">{children}</Content>
+                </Layout>
+              </Resizable>
+            </Draggable>
+          </animated.div>
         </animated.div>
-      </animated.div>
+      </div>
     )
   },
 )

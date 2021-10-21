@@ -56,7 +56,7 @@ export const App: React.FC<IApp> = memo(
 
     const onCloseAppWindow = useCallback(() => {
       dispatch(closeApp(name))
-      delay(1000, removeAppFromScreen)
+      delay(500, removeAppFromScreen)
     }, [dispatch, name])
 
     return (

@@ -2,26 +2,30 @@ import React from 'react'
 import {Menu} from 'antd'
 import {ISkillList, skills} from './list'
 
-import './content.scss'
+import {config, useSpring} from '@react-spring/core'
+import {animated} from '@react-spring/web'
 
 const {SubMenu} = Menu
 
 const SkillsAppContent: React.FC = () => {
+  const styles = useSpring({
+    from: {
+      transform: 'scale(0)',
+      opacity: 0,
+    },
+    to: {
+      transform: ' scale(1)',
+      opacity: 1,
+    },
+    delay: 300,
+    config: config.gentle,
+  })
+
   const parseList = (list: ISkillList[]) => {
     const result: React.ReactNode[] = []
-    list.forEach((item, index) => {
-      let done = false
-      const timeout = setTimeout(() => {
-        done = true
-        clearTimeout(timeout)
-      }, index * 100)
+    for (const item of list) {
       result.push(
-        <SubMenu
-          style={{animationDelay: index * 100 + 300 + 'ms'}}
-          className={`skills-list-item ${done ? 'skills-list-item_done' : ''}`}
-          icon={item.icon}
-          key={item.title}
-          title={item.title}>
+        <SubMenu icon={item.icon} key={item.title} title={item.title}>
           {item.items.map(skill => {
             if ('name' in skill) {
               return <Menu.Item key={skill.name}>{skill.name}</Menu.Item>
@@ -30,15 +34,15 @@ const SkillsAppContent: React.FC = () => {
           })}
         </SubMenu>,
       )
-    })
+    }
     return result
   }
   return (
-    <section>
+    <animated.section style={styles}>
       <Menu style={{background: 'none', border: 'none'}} mode="inline">
         {parseList(skills)}
       </Menu>
-    </section>
+    </animated.section>
   )
 }
 

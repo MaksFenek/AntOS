@@ -11,7 +11,7 @@ export const Loader: React.FC = ({children}) => {
       opacity: 0.5,
     },
     to: {
-      transform: 'scale(2)',
+      transform: 'scale(1)',
       opacity: 1,
     },
     config: config.gentle,
