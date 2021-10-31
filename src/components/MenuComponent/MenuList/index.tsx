@@ -6,11 +6,16 @@ import {GithubOutlined, FileTextFilled} from '@ant-design/icons'
 import TgIcon from 'src/assets/tg.svg'
 import Gmail from 'src/assets/gmail.svg'
 
+import './menuList.scss'
+
 const {SubMenu, Item} = MenuLayout
 
 export const MenuList: React.FC = () => {
   return (
-    <MenuLayout defaultOpenKeys={['contacts']} mode="inline">
+    <MenuLayout
+      className="menu-list"
+      defaultOpenKeys={['contacts']}
+      mode="inline">
       <SubMenu key="contacts" title="Contacts">
         <Item icon={<GithubOutlined style={{fontSize: '30px'}} />} key="github">
           <a

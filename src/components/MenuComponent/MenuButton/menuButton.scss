@@ -1,0 +1,10 @@
+.menu-button {
+  height: var(--menu-button-size) !important;
+  width: var(--menu-button-size) !important;
+  padding: 0 !important;
+  margin-right: var(--menu-button-margin);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}

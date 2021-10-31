@@ -5,6 +5,8 @@ import {ISkillList, skills} from './list'
 import {config, useSpring} from '@react-spring/core'
 import {animated} from '@react-spring/web'
 
+import './content.scss'
+
 const {SubMenu} = Menu
 
 const SkillsAppContent: React.FC = () => {
@@ -39,7 +41,7 @@ const SkillsAppContent: React.FC = () => {
   }
   return (
     <animated.section style={styles}>
-      <Menu style={{background: 'none', border: 'none'}} mode="inline">
+      <Menu className="skill-app-menu" mode="inline">
         {parseList(skills)}
       </Menu>
     </animated.section>

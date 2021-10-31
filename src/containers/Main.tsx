@@ -8,10 +8,11 @@ import {HelpApp} from 'src/apps/Help'
 import {WarningModal} from 'src/components/WarningModal'
 import {AccountApp} from 'src/apps/Account'
 import {ClockWidget} from 'src/widgets/clock'
+import {CursorSupportWrapper} from 'src/components/CursorSupportWrapper'
 
 export const Main: React.FC = () => {
   return (
-    <section>
+    <CursorSupportWrapper>
       <Desktop>
         <ClockWidget />
         <AccountApp />
@@ -21,6 +22,6 @@ export const Main: React.FC = () => {
         <SkillsApp />
       </Desktop>
       <WarningModal />
-    </section>
+    </CursorSupportWrapper>
   )
 }

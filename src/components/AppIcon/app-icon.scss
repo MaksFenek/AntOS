@@ -1,7 +1,7 @@
 .app-icon {
   height: var(--app-icon-size);
   width: var(--app-icon-size);
-  background: var(--app-icon-background);
+  // background: var(--app-icon-background);
   border-radius: var(--menu-window-border-radius);
   padding: 0;
   z-index: 1;
@@ -21,7 +21,7 @@
   }
 
   &__name {
-    margin-top: 5px;
+    margin-top: 0px;
     word-wrap: break-word;
     text-align: center;
     font-weight: 300;

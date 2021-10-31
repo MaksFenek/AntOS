@@ -1,11 +1,14 @@
 import React from 'react'
-import {Divider, Space, Typography, Steps, Timeline, Button} from 'antd'
+import {Divider, Space, Typography, Steps, Timeline} from 'antd'
 import {animated, config, useSpring} from 'react-spring'
+import {useCursor} from 'src/hooks'
 
 const {Title, Paragraph, Text} = Typography
 const {Step} = Steps
 
 const ResumeAppContent: React.FC = () => {
+  const [className, onMouseEnter, onMouseMove, onMouseLeave] = useCursor()
+  const cursor = {className, onMouseEnter, onMouseMove, onMouseLeave}
   const styles = useSpring({
     from: {
       opacity: 0,
@@ -72,36 +75,41 @@ const ResumeAppContent: React.FC = () => {
         </Steps>
         <Divider />
         <Title level={3}>Контакты</Title>
-        <Text strong>
-          GitHub:
-          <Button
-            type="link"
-            href="https://github.com/MaksFenek"
-            target="_blank"
-            rel="nofollow noopener">
-            MaksFenek
-          </Button>
-        </Text>
-        <Text strong>
-          HeadHunter:
-          <Button
-            type="link"
-            href="https://hh.ru/resume/1bb48cb7ff08c91eb20039ed1f3356576a3478"
-            target="_blank"
-            rel="nofollow noopener">
-            Резюме
-          </Button>
-        </Text>
-        <Text strong>
-          Telegram:
-          <Button
-            type="link"
-            href="https://t.me/m_fenek"
-            target="_blank"
-            rel="nofollow noopener">
-            @m_fenek
-          </Button>
-        </Text>
+        <Space direction="vertical" size="large">
+          <Text strong>
+            GitHub:
+            <a
+              {...cursor}
+              type="link"
+              href="https://github.com/MaksFenek"
+              target="_blank"
+              rel="nofollow noopener">
+              MaksFenek
+            </a>
+          </Text>
+          <Text strong>
+            HeadHunter:
+            <a
+              {...cursor}
+              type="link"
+              href="https://hh.ru/resume/1bb48cb7ff08c91eb20039ed1f3356576a3478"
+              target="_blank"
+              rel="nofollow noopener">
+              Резюме
+            </a>
+          </Text>
+          <Text strong>
+            Telegram:
+            <a
+              {...cursor}
+              type="link"
+              href="https://t.me/m_fenek"
+              target="_blank"
+              rel="nofollow noopener">
+              @m_fenek
+            </a>
+          </Text>
+        </Space>
       </Space>
     </animated.section>
   )

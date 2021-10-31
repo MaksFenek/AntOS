@@ -1,5 +1,6 @@
 import React from 'react'
 import Draggable from 'react-draggable'
+import {useCursor} from 'src/hooks'
 
 import './widget.scss'
 
@@ -19,6 +20,7 @@ export const Widget: React.FC<IWidget> = ({
   defaultPosition,
   children,
 }) => {
+  const [className, onMouseEnter, onMouseMove, onMouseLeave] = useCursor()
   return (
     <Draggable
       bounds=".desktop"
@@ -29,7 +31,12 @@ export const Widget: React.FC<IWidget> = ({
           y: window.innerHeight / 2 - 200,
         }
       }>
-      <section style={style} className="widget-layout">
+      <section
+        style={style}
+        className={'widget-layout ' + className}
+        onMouseEnter={onMouseEnter}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}>
         {children}
       </section>
     </Draggable>

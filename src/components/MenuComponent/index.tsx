@@ -1,13 +1,10 @@
-import React, {useState} from 'react'
-import {Button} from 'antd'
-import {HomeTwoTone} from '@ant-design/icons'
+import React, {memo, useState} from 'react'
 
 import {useOutsideClick} from 'src/hooks'
 import {MenuWindow} from './MenuWindow'
+import {MenuButton} from './MenuButton'
 
-import './menu.scss'
-
-export const Menu: React.FC = () => {
+export const Menu: React.FC = memo(() => {
   const [isOpen, setIsOpen] = useState(false)
   const [closing, setClosing] = useState(true)
 
@@ -28,14 +25,8 @@ export const Menu: React.FC = () => {
 
   return (
     <Wrapper>
-      <Button
-        onClick={onClick}
-        className="menu-button"
-        size="middle"
-        type="text">
-        <HomeTwoTone style={{fontSize: '30px'}} />
-      </Button>
+      <MenuButton onClick={onClick} />
       {isOpen && <MenuWindow closing={closing} />}
     </Wrapper>
   )
-}
+})

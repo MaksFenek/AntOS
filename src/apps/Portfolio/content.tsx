@@ -1,5 +1,8 @@
 import React from 'react'
 import {Carousel, Divider, Space, Typography, Timeline} from 'antd'
+import {animated, config, useSpring} from 'react-spring'
+
+import {useCursor} from 'src/hooks'
 
 import DEWelcomePage from './images/digitalEstate/welcome.webp'
 import DESearchPage from './images/digitalEstate/search.webp'
@@ -17,10 +20,11 @@ import MLightPage from './images/messenger/light.webp'
 import MWMainPage from './images/miniWeather/main.webp'
 
 import './portfolio.scss'
-import {animated, config, useSpring} from 'react-spring'
 const {Title, Text, Paragraph} = Typography
 
 const PortfolioAppContent: React.FC = () => {
+  const [className, onMouseEnter, onMouseMove, onMouseLeave] = useCursor()
+  const cursor = {className, onMouseEnter, onMouseMove, onMouseLeave}
   const styles = useSpring({
     from: {
       opacity: 0,
@@ -41,12 +45,14 @@ const PortfolioAppContent: React.FC = () => {
         <Paragraph strong className="portfolio-item__header">
           <Space size={36}>
             <a
+              {...cursor}
               href="https://digitestate.herokuapp.com/"
               target="_blank"
               rel="nofollow noopener">
               Сайт
             </a>
             <a
+              {...cursor}
               href="https://github.com/MaksFenek/RealEstate"
               target="_blank"
               rel="nofollow noopener">
@@ -95,12 +101,14 @@ const PortfolioAppContent: React.FC = () => {
         <Paragraph strong className="portfolio-item__header">
           <Space size={36}>
             <a
+              {...cursor}
               href="https://lite-screen.web.app/"
               target="_blank"
               rel="nofollow noopener">
               Сайт
             </a>
             <a
+              {...cursor}
               href="https://github.com/MaksFenek/Lite-Screen"
               target="_blank"
               rel="nofollow noopener">
@@ -149,6 +157,7 @@ const PortfolioAppContent: React.FC = () => {
         <Paragraph strong className="portfolio-item__header">
           <Space size={36}>
             <a
+              {...cursor}
               href="https://github.com/MaksFenek/Messenger"
               target="_blank"
               rel="nofollow noopener">
@@ -196,12 +205,14 @@ const PortfolioAppContent: React.FC = () => {
         <Paragraph strong className="portfolio-item__header">
           <Space size={36}>
             <a
+              {...cursor}
               href="https://mini-weather.netlify.app/"
               target="_blank"
               rel="nofollow noopener">
               Сайт
             </a>
             <a
+              {...cursor}
               href="https://github.com/MaksFenek/mini-weather"
               target="_blank"
               rel="nofollow noopener">

@@ -2,6 +2,7 @@ import {config, useSpring} from '@react-spring/core'
 import {animated} from '@react-spring/web'
 import React, {memo} from 'react'
 import Draggable, {ControlPosition} from 'react-draggable'
+import {useCursor} from 'src/hooks'
 
 import './app-icon.scss'
 
@@ -19,6 +20,7 @@ export const AppIcon: React.FC<IAppIcon> = memo(
     name,
     ...props
   }) => {
+    const [className, onMouseEnter, onMouseMove, onMouseLeave] = useCursor()
     const styles = useSpring({
       from: {
         transform: 'scale(0)',
@@ -36,7 +38,13 @@ export const AppIcon: React.FC<IAppIcon> = memo(
         bounds={bounds}>
         <div className="app-icon__handle">
           <animated.div style={styles} className="app-icon" {...props}>
-            {children}
+            <div
+              className={className}
+              onMouseEnter={onMouseEnter}
+              onMouseMove={onMouseMove}
+              onMouseLeave={onMouseLeave}>
+              {children}
+            </div>
           </animated.div>
           <animated.span style={styles} className="app-icon__name">
             {name}
