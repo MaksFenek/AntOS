@@ -1,0 +1,80 @@
+.main {
+  cursor: none;
+}
+
+.cursor-wrapper {
+  padding: 0.6em 0.8em;
+  transform: translate(var(--translateX), var(--translateY)) scale(var(--scale));
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+  transition-property: opacity;
+  z-index: 1;
+  cursor: none !important;
+
+  --scale: 1;
+  --translateX: 0;
+  --translateY: 0;
+
+  &:not(:hover) {
+    transition-property: transform, opacity;
+  }
+
+  &:active {
+    opacity: 0.5;
+    transform: translate(var(--translateX), var(--translateY)) scale(1);
+  }
+
+  > * {
+    cursor: none !important;
+  }
+}
+
+.cursor {
+  height: var(--height);
+  width: var(--width);
+  left: var(--left);
+  pointer-events: none;
+  top: var(--top);
+  transform: translate(-50%, -50%) scale(var(--scale));
+  transition-property: width, height;
+  z-index: 10000;
+
+  --top: -1em;
+  --left: -1em;
+  --width: 18px;
+  --height: 18px;
+  --scale: 1;
+  --translateX: 0;
+  --translateY: 0;
+
+  &.is-locked {
+    transition-property: width, height, left, top;
+
+    .cursor__content {
+      z-index: 10000;
+      opacity: 0.06;
+    }
+  }
+
+  &,
+  &__content {
+    position: absolute;
+    z-index: 10000;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+  }
+
+  &__content {
+    z-index: 2000;
+    background-color: #000;
+    border-radius: 0.6em;
+    z-index: 10000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    right: 0;
+    top: 0;
+    transform: translate(var(--translateX), var(--translateY));
+    transition-property: 'opacity';
+  }
+}

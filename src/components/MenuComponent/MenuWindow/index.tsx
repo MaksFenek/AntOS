@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {MenuList} from '../MenuList'
 
 import {animated, useSpring, config} from 'react-spring'
@@ -8,7 +8,7 @@ interface IMenuWindow {
   closing: boolean
 }
 
-export const MenuWindow: React.FC<IMenuWindow> = ({closing = true}) => {
+export const MenuWindow: React.FC<IMenuWindow> = memo(({closing = true}) => {
   const styles = useSpring({
     from: {
       height: '0vh',
@@ -29,4 +29,4 @@ export const MenuWindow: React.FC<IMenuWindow> = ({closing = true}) => {
       <MenuList />
     </animated.div>
   )
-}
+})

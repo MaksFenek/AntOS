@@ -1,8 +1,11 @@
 import {useCallback, useEffect, useState} from 'react'
 import {DatePicker, TimePicker} from 'antd'
 import moment from 'moment'
+import {useCursor} from 'src/hooks'
 
 export const Date = () => {
+  const [className, onMouseEnter, onMouseMove, onMouseLeave] = useCursor()
+  const cursor = {className, onMouseEnter, onMouseMove, onMouseLeave}
   const [time, setTime] = useState<moment.Moment>()
   const [date, setDate] = useState<moment.Moment>()
 
@@ -22,8 +25,14 @@ export const Date = () => {
   }, [])
   return (
     <>
-      <TimePicker bordered={false} allowClear={false} value={time} />
+      <TimePicker
+        {...cursor}
+        bordered={false}
+        allowClear={false}
+        value={time}
+      />
       <DatePicker
+        {...cursor}
         onChange={onDateChange}
         bordered={false}
         allowClear={false}
