@@ -79,13 +79,13 @@ export const AppWindow: React.FC<IAppWindow> = memo(
                   <Header className="handle app-window__header">
                     <Space align="center" size={0}>
                       <div
+                        onClick={onClose}
                         className={cursorClassName}
                         onMouseEnter={onMouseEnter}
                         onMouseMove={onMouseMove}
                         onMouseLeave={onMouseLeave}>
                         <Button
                           className="non-draggable"
-                          onClick={onClose}
                           size="small"
                           type="primary"
                           icon={<CloseOutlined />}
@@ -93,13 +93,13 @@ export const AppWindow: React.FC<IAppWindow> = memo(
                       </div>
 
                       <div
+                        onClick={onHide}
                         className={cursorClassName}
                         onMouseEnter={onMouseEnter}
                         onMouseMove={onMouseMove}
                         onMouseLeave={onMouseLeave}>
                         <Button
                           className="non-draggable"
-                          onClick={onHide}
                           size="small"
                           type="primary"
                           icon={<LineOutlined />}
