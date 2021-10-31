@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/apps/Skills/content.scss"],"names":[],"mappings":"AAAA,gBACE,eAAgB,CAChB,WAAY,CACZ,WAAY,CAHd,kBAKI,qBAAuB","file":"9.0691b0cf.chunk.css","sourcesContent":[".skill-app-menu {\n  background: none;\n  border: none;\n  cursor: none;\n  * {\n    cursor: none !important;\n  }\n}\n"]}
